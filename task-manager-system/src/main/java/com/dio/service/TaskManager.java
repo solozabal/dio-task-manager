@@ -32,11 +32,11 @@ public class TaskManager {
     }
 
     public List<Task> getAllTask() {
-        if (strategy!= null) {
-            return strategy.prioritize(taskRepository.findAll());
-        } else {
-            return taskRepository.findAll();
+        List<Task> tasks = taskRepository.findAll();
+        if (strategy != null) {
+            strategy.prioritize(tasks);
         }
+        return tasks;
     }
 
     public Task createTask(Task task) {
@@ -50,5 +50,4 @@ public class TaskManager {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
-
 }

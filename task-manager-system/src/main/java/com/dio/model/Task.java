@@ -21,5 +21,17 @@ public class Task {
     private LocalDateTime dueDate;
     private int importance;
 
-}
+    private LocalDateTime creationDate;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public int getImportance() {
+        return importance;
+    }
+}
