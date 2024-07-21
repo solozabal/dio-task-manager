@@ -1,12 +1,12 @@
 com\dio\model\Task.class
 com\dio\controller\BadRequestException.class
+com\dio\service\TaskManager.class
+com\dio\strategy\TaskPrioritizationStrategy.class
+com\dio\TaskManagerSystemApplication.class
+com\dio\repository\TaskRepository.class
 com\dio\controller\GeneralExceptionHandler.class
 com\dio\facade\TaskFacade.class
-com\dio\service\TaskManager.class
 com\dio\strategy\TaskPrioritizer$Strategy.class
 com\dio\config\SwaggerConfig.class
 com\dio\controller\TaskController.class
-com\dio\strategy\TaskPrioritizationStrategy.class
 com\dio\strategy\TaskPrioritizer.class
-com\dio\TaskManagerSystemApplication.class
-com\dio\repository\TaskRepository.class

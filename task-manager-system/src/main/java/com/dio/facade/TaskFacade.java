@@ -21,7 +21,9 @@ public class TaskFacade {
 
     public List<Task> getAllTasks(TaskPrioritizationStrategy strategy) {
         List<Task> tasks = taskRepository.findAll();
-        strategy.prioritize(tasks);
+        if (strategy != null) {
+            strategy.prioritize(tasks);
+        }
         return tasks;
     }
 

@@ -4,6 +4,7 @@ C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-syste
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\strategy\TaskPrioritizationStrategy.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\facade\TaskFacade.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\TaskManagerSystemApplication.java
+C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\config\JpaConfig.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\model\Task.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\service\TaskManager.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\controller\GeneralExceptionHandler.java
