@@ -11,11 +11,16 @@ import com.dio.strategy.TaskPrioritizationStrategy;
 
 @Service
 public class TaskFacade {
+
+    private final TaskRepository taskRepository;
+
     @Autowired
-    private TaskRepository taskRepository;
+    public TaskFacade(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     public List<Task> getAllTasks(TaskPrioritizationStrategy strategy) {
-        List<Task> tasks = taskRepository.findAll(); 
+        List<Task> tasks = taskRepository.findAll();
         strategy.prioritize(tasks);
         return tasks;
     }

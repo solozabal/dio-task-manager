@@ -1,38 +1,39 @@
 package com.dio.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import com.dio.strategy.PrioritizeByDate;
-import com.dio.strategy.PrioritizeByImportance;
+import org.springframework.web.bind.annotation.*;
 
 import com.dio.facade.TaskFacade;
 import com.dio.model.Task;
-import com.dio.strategy.TaskPrioritizationStrategy;
+import com.dio.service.TaskManager;
+import com.dio.strategy.TaskPrioritizer;
 
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
+
+    private final TaskFacade taskFacade;
+    private final TaskManager taskManager;
+
     @Autowired
-    private TaskFacade taskFacade;
+    public TaskController(TaskFacade taskFacade, TaskManager taskManager) {
+        this.taskFacade = taskFacade;
+        this.taskManager = taskManager;
+    }
 
     @GetMapping
-public List<Task> getAllTasks(@RequestParam String strategy) {
-    TaskPrioritizationStrategy taskPrioritizationStrategy = switch (strategy) {
-        case "date" -> new PrioritizeByDate();
-        case "importance" -> new PrioritizeByImportance();
-        default -> new PrioritizeByDate();
-    };
-    return taskFacade.getAllTasks(taskPrioritizationStrategy);
-}
+    public List<Task> getAllTasks(@RequestParam String strategy) {
+        TaskPrioritizer.Strategy prioritizationStrategy = switch (strategy.toLowerCase()) {
+            case "date" -> TaskPrioritizer.Strategy.BY_DATE;
+            case "importance" -> TaskPrioritizer.Strategy.BY_IMPORTANCE;
+            default -> TaskPrioritizer.Strategy.BY_DATE;
+        };
+        TaskPrioritizer taskPrioritizer = new TaskPrioritizer(prioritizationStrategy);
+        taskManager.setTaskPrioritizer(taskPrioritizer);
+        return taskManager.getAllTasks();
+    }
 
     @PostMapping
     public Task createTask(@RequestBody Task task) {
@@ -41,7 +42,7 @@ public List<Task> getAllTasks(@RequestParam String strategy) {
 
     @PutMapping("/{id}")
     public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
-        task.setId(id); // assuming Task class has setId method
+        task.setId(id);
         return taskFacade.updateTask(task);
     }
 
