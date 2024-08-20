@@ -1,3 +1,7 @@
+
+/**
+ * Represents a project in the task manager system.
+ */
 package com.dio.model;
 
 import javax.persistence.Entity;

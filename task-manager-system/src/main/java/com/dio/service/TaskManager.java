@@ -1,3 +1,15 @@
+
+/**
+ * The TaskManager class is responsible for managing tasks in the task manager system.
+ * It provides methods for creating, updating, and deleting tasks, as well as retrieving all tasks.
+ * Tasks can be prioritized, validated, and associated with projects.
+ * 
+ * This class uses the TaskRepository and ProjectRepository interfaces for data access.
+ * 
+ * @see TaskRepository
+ * @see ProjectRepository
+ */
+
 package com.dio.service;
 
 import java.time.LocalDateTime;
@@ -9,10 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dio.model.Task;
 import com.dio.model.Project;
-import com.dio.repository.TaskRepository;
+import com.dio.model.Task;
 import com.dio.repository.ProjectRepository;
+import com.dio.repository.TaskRepository;
 
 @Service
 public class TaskManager {

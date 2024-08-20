@@ -1,10 +1,12 @@
-com\dio\model\Task$Category.class
-com\dio\model\Task$User.class
 com\dio\config\SecurityConfig.class
-com\dio\model\Task$Project.class
 com\dio\model\Task.class
+com\dio\repository\ProjectRepository.class
+com\dio\model\User.class
 com\dio\service\TaskManager.class
 com\dio\service\TaskService.class
 com\dio\controller\TaskController.class
 com\dio\TaskManagerSystemApplication.class
+com\dio\model\Category.class
+com\dio\model\Project.class
 com\dio\repository\TaskRepository.class
+com\dio\service\TaskNotFoundException.class

@@ -1,7 +1,11 @@
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\controller\TaskController.java
+C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\repository\ProjectRepository.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\TaskManagerSystemApplication.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\model\Task.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\config\SecurityConfig.java
+C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\model\User.java
+C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\model\Project.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\service\TaskManager.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\service\TaskService.java
+C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\model\Category.java
 C:\Users\pedro\Documents\Pedro Solozabal\DIO\dio-task-manager\task-manager-system\src\main\java\com\dio\repository\TaskRepository.java

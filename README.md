@@ -1,74 +1,111 @@
-# dio-task-manager
-Simple task management system with RESTful API, built with Java, Spring Boot, and design patterns. Manage tasks with priority, due date, and importance.
+# DIO Task Manager
 
+## Overview
+
+DIO Task Manager é uma aplicação de gerenciamento de tarefas desenvolvida com Spring Boot. A aplicação utiliza um banco de dados H2 em memória para armazenar as tarefas.
+
+## Estrutura do Projeto
+
+- **Model**: Contém as classes de entidade.
+- **Repository**: Contém as interfaces de repositório que estendem `JpaRepository`.
+- **Service**: Contém as classes de serviço que implementam a lógica de negócios.
+- **Controller**: Contém os controladores REST para gerenciar as requisições HTTP.
+- **Config**: Contém as classes de configuração, como segurança.
+- **Application**: Classe principal que inicializa a aplicação Spring Boot.
+
+## Tecnologias Utilizadas
+
+- Java
+- Spring Boot
+- Spring Data JPA
+- H2 Database
+
+## Configuração do Banco de Dados
+
+A aplicação está configurada para usar um banco de dados H2 em memória. As configurações podem ser encontradas no arquivo `application.properties`.
+
+```properties
+# Configurações do banco de dados H2
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+
+# Dialeto do Hibernate para o H2
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# Habilitar o console H2 para visualização do banco de dados
+spring.h2.console.enabled=true
+
+## Diagrama UML
 classDiagram
-    direction LR
+    direction TB
 
     class TaskManagerSystemApplication {
     }
 
     class TaskController {
-        - TaskFacade taskFacade
-        + getAllTasks(strategy: String): List~Task~
-        + createTask(task: Task): Task
-        + updateTask(id: Long, task: Task): Task
-        + deleteTask(id: Long): void
+        - TaskService taskService
+        + getAllTasks(): List~Task~
     }
 
-    class TaskFacade {
+    class TaskService {
         - TaskRepository taskRepository
-        + getAllTasks(strategy: TaskPrioritizationStrategy): List~Task~
-        + createTask(task: Task): Task
-        + updateTask(task: Task): Task
-        + deleteTask(id: Long): void
+        + findAllTasks(): List~Task~
+    }
+
+    class TaskRepository {
+        + findAll(): List~Task~
     }
 
     class Task {
         Long id
         String name
-        String description
-        LocalDateTime dueDate
-        int importance
-        LocalDateTime creationDate
+        Category category
+        Project project
+        User user
+        + getId(): Long
+        + getName(): String
+        + getCategory(): Category
+        + getProject(): Project
+        + getUser(): User
         + setId(id: Long): void
-        + getCreationDate(): LocalDateTime
-        + getImportance(): int
+        + setName(name: String): void
+        + setCategory(category: Category): void
+        + setProject(project: Project): void
+        + setUser(user: User): void
     }
 
-    class TaskRepository {
+    class Category {
+        Long id
+        String name
+        + getId(): Long
+        + getName(): String
+        + setId(id: Long): void
+        + setName(name: String): void
     }
 
-    class TaskManager {
-        - static TaskManager instance
-        - TaskRepository taskRepository
-        - TaskPrioritizationStrategy strategy
-        ~ TaskManager() 
-        + static getInstance(): TaskManager
-        + setStrategy(strategy: TaskPrioritizationStrategy): void
-        + getAllTask(): List~Task~
-        + createTask(task: Task): Task
-        + updateTask(task: Task): Task
-        + deleteTask(id: Long): void
+    class Project {
+        Long id
+        String name
+        + getId(): Long
+        + getName(): String
+        + setId(id: Long): void
+        + setName(name: String): void
     }
 
-    class TaskPrioritizationStrategy {
-        + prioritize(tasks: List~Task~): List~Task~
+    class User {
+        Long id
+        String name
+        + getId(): Long
+        + getName(): String
+        + setId(id: Long): void
+        + setName(name: String): void
     }
 
-    class PrioritizeByDate {
-        + prioritize(tasks: List~Task~): List~Task~
-    }
-
-    class PrioritizeByImportance {
-        + prioritize(tasks: List~Task~): List~Task~
-    }
-
-    TaskController --> TaskFacade : uses
-    TaskFacade --> TaskRepository : uses
-    TaskFacade --> Task : manages
-    TaskRepository --> Task : persists
-    TaskManager --> TaskRepository : uses
-    TaskManager --> TaskPrioritizationStrategy : uses
-    TaskManager --> Task : manages
-    TaskPrioritizationStrategy <|-- PrioritizeByDate : implements
-    TaskPrioritizationStrategy <|-- PrioritizeByImportance : implements
+    TaskController --> TaskService
+    TaskService --> TaskRepository
+    TaskRepository --> Task
+    Task --> Category
+    Task --> Project
+    Task --> User
