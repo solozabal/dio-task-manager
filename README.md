@@ -38,6 +38,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 spring.h2.console.enabled=true
 
 ## Diagrama UML
+
 classDiagram
     direction TB
 
