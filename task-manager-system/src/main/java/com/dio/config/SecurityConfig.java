@@ -15,9 +15,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
+            .csrf(csrf -> csrf.disable()) // Desabilitar CSRF para testes (não recomendado para produção)
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/tasks/**").permitAll() // Permitir acesso público aos endpoints de tarefas
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**").permitAll() // Permitir acesso público ao Swagger UI e à documentação da API
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form.disable()) // Desabilitar o formulário de login
