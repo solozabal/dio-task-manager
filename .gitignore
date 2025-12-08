@@ -1,7 +1,18 @@
-# Compiled class file
+# Java and Spring Boot project .gitignore (perfect for Maven, H2, IntelliJ, Eclipse etc)
+
+# Compiled class files
 *.class
 
-# Log file
+# JAR, WAR, EAR, ZIP artifacts
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Log files
 *.log
 
 # BlueJ files
@@ -10,25 +21,77 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs
 hs_err_pid*
 replay_pid*
 
-# STS 
-.apt_generated
+# Maven target build directory
+/target/
+
+# Eclipse
 .classpath
-.factorypath
 .project
-.settings
+.settings/
 .springBeans
+.apt_generated
+.factorypath
+
+# STS
 .sts4-cache
 
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+# IntelliJ project workspace and gradle caches
+*.gpg
+.gradle/
+build/
+# JetBrains IDE user-specific files/folders
+*.sublime-workspace
+*.sublime-project
+
+# VS Code
+.vscode/
+
+# macOS & Windows system files
+.DS_Store
+Thumbs.db
+
+# Node / Yarn / npm (exclude in case frontend is added in the future)
+node_modules/
+yarn.lock
+package-lock.json
+
+# H2 Database (if file-based DBs are used, otherwise just keep screenshots)
+/*.mv.db
+/*.h2.db
+
+# Local test/output files
+*.tmp
+*.bak
+
+# ignore assets folder if you want to keep screenshots only in repo:
+# !assets/
+# Uncomment above line if you always want to keep /assets
+
+# Ignore environment files (.env, secrets, etc)
+.env*
+.secret*
+.secrets/
+*.env
+
+# Misc
+*.swp
+*.swo
+*.orig
+*.rej
+
+# Exclude backup files
+*~
+*.bak
+
+# Explicitly keep your screenshots and docs
+!/assets/
